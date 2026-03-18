@@ -97,8 +97,7 @@
             <p class="text-muted mb-0">
               Já possui uma conta? 
              <router-link to="/" class="...">Faça login aqui</router-link>
-                Faça login aqui
-              </router-link>
+               
             </p>
           </div>
         </div>
