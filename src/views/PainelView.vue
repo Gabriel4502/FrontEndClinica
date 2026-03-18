@@ -236,14 +236,22 @@ const marcarConsulta = async () => {
       cidade: novoAgendamento.value.cidade,
     })
 
-    agendamentos.value.push(resposta.data)
-    novoAgendamento.value = { data: '', hora: '', cep: '', enderecoCompleto: '', cidade: '' }
-    carregando.value = false
+      agendamentos.value.push(resposta.data);
+      novoAgendamento.value = { data: '', hora: '', cep: '', enderecoCompleto: '', cidade: '' };
 
-    const modalElement = document.getElementById('modalNovoAgendamento')
-    const modal = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement)
-    modal.hide()
+      carregando.value = false;
+      const modalElement = document.getElementById('modalNovoAgendamento');
+      const modal = bootstrap.Modal.getInstance(modalElement);
+
+    if (modal) modal.hide();
+        document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+
   } catch (erro) {
+
+
     carregando.value = false
     alert(erro.response?.data?.error || 'Erro ao marcar consulta.')
   }
