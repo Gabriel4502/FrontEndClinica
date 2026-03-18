@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://backendclinica-ubpz.onrender.com'
+  baseURL: 'https://backendclinica-qich.onrender.com'
 });
 
 
