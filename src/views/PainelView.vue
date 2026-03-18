@@ -166,11 +166,20 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import api from '../services/api'
 
-const router = useRouter()
+import { ref, onMounted } from 'vue';
+
+import { useRouter } from 'vue-router';
+
+import api from '../services/api';
+
+
+
+import * as bootstrap from 'bootstrap'; 
+
+
+
+const router = useRouter();
 
 const usuario = ref(
   JSON.parse(localStorage.getItem('usuario')) || { nome: 'Usuário', tipo: 'paciente' },
