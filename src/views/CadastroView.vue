@@ -72,6 +72,19 @@
             </div>
 
             <div class="d-grid gap-2 mb-4">
+              <div v-if="erroMensagem" class="alert alert-danger d-flex align-items-center rounded-3 p-2 mb-4" role="alert">
+              <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+              <div>
+                <strong class="me-1">Aviso:</strong> {{ erroMensagem }}
+              </div>
+            </div>
+
+            <div v-if="sucessoMensagem" class="alert alert-success d-flex align-items-center rounded-3 p-2 mb-4" role="alert">
+              <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+              <div>{{ sucessoMensagem }}</div>
+            </div>
+
+            <div class="d-grid gap-2 mb-4">
               <button 
                 type="submit" 
                 class="btn btn-primary btn-lg fw-bold rounded-3 shadow-sm"
@@ -112,11 +125,15 @@ const email = ref('');
 const senha = ref('');
 const tipo = ref('');
 const erroMensagem = ref('');
+const sucessoMensagem = ref('');
 const router = useRouter();
 
 const fazerCadastro = async () => {
   try {
+   
     erroMensagem.value = '';
+    sucessoMensagem.value = 'Cadastrando usuário...';
+    
     await api.post('/auth/registrar', {
       nome: nome.value,
       email: email.value,
@@ -124,21 +141,20 @@ const fazerCadastro = async () => {
       tipo: tipo.value
     });
 
-    mensagem.value = "Cadastro realizado com sucesso! Redirecionando...";
+
+    sucessoMensagem.value = "Cadastro realizado com sucesso! Redirecionando...";
     
     setTimeout(() => {
       router.push('/login');
     }, 2000);
     
   } catch (erro) {
-    sucesso.value = false;
-    mensagem.value = erro.response?.data?.error || 'Erro ao realizar o cadastro.';
-  } finally {
-    carregando.value = false;
+
+    sucessoMensagem.value = '';
+    erroMensagem.value = erro.response?.data?.error || 'Erro ao realizar o cadastro.';
   }
 };
 </script>
-
 <style scoped>
 
 .card-header, .card-body {
