@@ -96,7 +96,7 @@
           <div class="text-center mt-3">
             <p class="text-muted mb-0">
               Já possui uma conta? 
-              <router-link to="/login" class="text-primary fw-bold text-decoration-none ms-1">
+             <router-link to="/" class="...">Faça login aqui</router-link>
                 Faça login aqui
               </router-link>
             </p>
@@ -135,7 +135,7 @@ const fazerCadastro = async () => {
     sucessoMensagem.value = "Cadastro realizado com sucesso! Redirecionando...";
     
     setTimeout(() => {
-      router.push('/login');
+      router.push('/');
     }, 2000);
     
   } catch (erro) {
