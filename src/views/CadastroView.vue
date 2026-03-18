@@ -71,8 +71,7 @@
               </select>
             </div>
 
-            <div class="d-grid gap-2 mb-4">
-              <div v-if="erroMensagem" class="alert alert-danger d-flex align-items-center rounded-3 p-2 mb-4" role="alert">
+            <div v-if="erroMensagem" class="alert alert-danger d-flex align-items-center rounded-3 p-2 mb-4" role="alert">
               <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
               <div>
                 <strong class="me-1">Aviso:</strong> {{ erroMensagem }}
@@ -91,13 +90,6 @@
               >
                 Cadastrar
               </button>
-            </div>
-
-            <div v-if="erroMensagem" class="alert alert-danger d-flex align-items-center rounded-3 p-2 mb-4" role="alert">
-              <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
-              <div>
-                <strong class="me-1">Aviso:</strong> {{ erroMensagem }}
-              </div>
             </div>
           </form>
 
@@ -130,7 +122,6 @@ const router = useRouter();
 
 const fazerCadastro = async () => {
   try {
-   
     erroMensagem.value = '';
     sucessoMensagem.value = 'Cadastrando usuário...';
     
@@ -141,7 +132,6 @@ const fazerCadastro = async () => {
       tipo: tipo.value
     });
 
-
     sucessoMensagem.value = "Cadastro realizado com sucesso! Redirecionando...";
     
     setTimeout(() => {
@@ -149,14 +139,13 @@ const fazerCadastro = async () => {
     }, 2000);
     
   } catch (erro) {
-
     sucessoMensagem.value = '';
     erroMensagem.value = erro.response?.data?.error || 'Erro ao realizar o cadastro.';
   }
 };
 </script>
-<style scoped>
 
+<style scoped>
 .card-header, .card-body {
   border-radius: 12px;
 }
@@ -166,7 +155,6 @@ const fazerCadastro = async () => {
   color: #dc3545 !important;
   border-color: #f5c2c7 !important;
 }
-
 
 .form-select.form-select-lg {
   color: #444 !important; 
