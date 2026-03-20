@@ -131,7 +131,6 @@
                   v-model="novoAgendamento.enderecoCompleto"
                   class="form-control bg-light border-0"
                   required
-                  readonly
                 />
               </div>
 
